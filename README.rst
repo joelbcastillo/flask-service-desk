@@ -15,6 +15,7 @@ Run the following commands to bootstrap your environment ::
     pipenv install --dev
     cp .env.example .env
     npm install
+    npm run build # Build the initial version of the assets and create the `manifest.json`
     npm start  # run the webpack dev server and flask server using concurrently
 
 You will see a pretty welcome screen.
