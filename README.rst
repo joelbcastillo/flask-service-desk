@@ -1,6 +1,5 @@
-.. image:: https://coveralls.io/repos/github/joelbcastillo/github-service-desk/badge.svg?branch=master
-:target: https://coveralls.io/github/joelbcastillo/github-service-desk?branch=master
-.. image:: https://travis-ci.com/joelbcastillo/github-service-desk.svg?branch=master
+.. image:: https://codecov.io/gh/joelbcastillo/github-service-desk/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/joelbcastillo/github-service-desk .. image:: https://travis-ci.com/joelbcastillo/github-service-desk.svg?branch=master
     :target: https://travis-ci.com/joelbcastillo/github-service-desk
 ===============================
 Github ServiceDesk
