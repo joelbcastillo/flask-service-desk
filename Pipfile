@@ -54,6 +54,7 @@ pyyaml = "*"
 black = "*"
 codecov = "*"
 sphinx = "*"
+pylint-flask = "*"
 
 [pipenv]
 allow_prereleases = true
