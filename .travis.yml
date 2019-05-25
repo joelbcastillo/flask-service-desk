@@ -7,11 +7,10 @@ env:
     - DATABASE_URL="sqlite:////tmp/dev.db"
     - SECRET_KEY="not-so-secret"
 python:
-  - 3.5
   - 3.6
   - 3.7
 install:
-  - pipenv install --dev --pre
+  - pipenv install --dev
   - nvm install 6.10
   - nvm use 6.10
   - npm install
