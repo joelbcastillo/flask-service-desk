@@ -10,51 +10,6 @@ from flask import current_app
 from flask.cli import with_appcontext
 from werkzeug.exceptions import MethodNotAllowed, NotFound
 
-HERE = os.path.abspath(os.path.dirname(__file__))
-PROJECT_ROOT = os.path.join(HERE, os.pardir)
-TEST_PATH = os.path.join(PROJECT_ROOT, "tests")
-
-COV = None
-if os.environ.get("FLASK_COVERAGE"):
-    import coverage
-
-    COV = coverage.coverage(branch=True, include="{project_root}".format(project_root=PROJECT_ROOT))
-    COV.start()
-
-
-@click.command()
-def test():
-    """Run the tests."""
-
-
-@click.command()
-@click.option(
-    "--coverage/--no-coverage", default=False, help="Run tests under code coverage."
-)
-def test(coverage):
-    """Run the unit tests."""
-    if coverage and not os.environ.get("FLASK_COVERAGE"):
-        import subprocess
-
-        os.environ["FLASK_COVERAGE"] = "1"
-        sys.exit(subprocess.call(sys.argv))
-
-    import pytest
-
-    rv = pytest.main([TEST_PATH, "--verbose"])
-    exit(rv)
-
-    if COV:
-        COV.stop()
-        COV.save()
-        print("Coverage Summary:")
-        COV.report()
-        basedir = os.path.abspath(os.path.dirname(__file__))
-        covdir = os.path.join(PROJECT_ROOT, "tmp/coverage")
-        COV.html_report(directory=covdir)
-        print("HTML version: file://%s/index.html" % covdir)
-        COV.erase()
-
 
 @click.command()
 @click.option(

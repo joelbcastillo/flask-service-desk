@@ -19,4 +19,7 @@ before_script:
   - npm run lint
   - npm run build
   - flask lint
-script: flask test --coverage
+script: 
+  - pytest --cov=servicedesk
+after_script:
+  - coveralls
