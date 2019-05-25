@@ -11,6 +11,63 @@ from flask.cli import with_appcontext
 from werkzeug.exceptions import MethodNotAllowed, NotFound
 
 
+COV = None
+if os.environ.get("FLASK_COVERAGE"):
+    import coverage
+
+    COV = coverage.coverage()
+    COV.start()
+    print("Coverage started.")
+
+HERE = os.path.abspath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.join(HERE, os.pardir)
+TEST_PATH = os.path.join(PROJECT_ROOT, "tests")
+
+
+@click.command()
+@click.option("--test-name", help="Specify tests (file, class, or specific test)")
+@click.option(
+    "--coverage/--no-coverage",
+    "use_coverage",
+    default=False,
+    help="Run tests under code coverage.",
+)
+@click.option("--verbose", is_flag=True, default=False, help="Py.Test verbose mode")
+def test(test_name: str = None, use_coverage: bool = False, verbose: bool = False):
+    """Run the unit tests."""
+    import pytest
+    from sys import exit, argv
+
+    if use_coverage and not os.environ.get("FLASK_COVERAGE"):
+        import subprocess
+
+        os.environ["FLASK_COVERAGE"] = "1"
+        exit(subprocess.call(argv))
+
+    command = []
+
+    if verbose:
+        command.append("-v")
+
+    if test_name:
+        command.append("tests/{test_name}".format(test_name=test_name))
+    else:
+        command.append("tests/")
+
+    pytest.main(command)
+
+    if COV:
+        COV.stop()
+        COV.save()
+        print("Coverage Summary:")
+        COV.report()
+        basedir = PROJECT_ROOT
+        covdir = os.path.join(basedir, "tmp/coverage")
+        COV.html_report(directory=covdir)
+        print("HTML version: file://%s/index.html" % covdir)
+        COV.erase()
+
+
 @click.command()
 @click.option(
     "-f",

@@ -1,7 +1,15 @@
 """Settings module for test app."""
+import os
+HERE = os.path.abspath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.join(HERE, os.pardir)
+TMP_PATH = os.path.join(PROJECT_ROOT, "tmp")
+
 ENV = "development"
 TESTING = True
-SQLALCHEMY_DATABASE_URI = "sqlite://"
+if os.name == 'nt':
+    SQLALCHEMY_DATABASE_URI = "sqlite:///{db_path}".format(db_path=os.path.join(TMP_PATH, 'tmp.db'))
+else:
+    SQLALCHEMY_DATABASE_URI = "sqlite://"
 SECRET_KEY = "not-so-secret-in-tests"
 BCRYPT_LOG_ROUNDS = (
     4
