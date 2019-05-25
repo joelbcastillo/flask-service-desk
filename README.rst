@@ -2,6 +2,8 @@
 Github ServiceDesk
 ===============================
 
+|build-status| |docs| |coverage|
+
 A Flask application to manage service requests using Github Issues.
 
 
