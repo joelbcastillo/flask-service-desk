@@ -45,7 +45,6 @@ class RegisterForm(FlaskForm):
         return True
 
 
-
 class ChangePasswordForm(FlaskForm):
     """Edit profile form."""
 

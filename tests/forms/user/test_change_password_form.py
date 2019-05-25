@@ -52,14 +52,10 @@ def test_validate_missing_current_password(user):
     user.set_password("example")
     user.save()
     form = ChangePasswordForm(
-        username=user.username,
-        new_password="example",
-        confirm_new_password="example",
+        username=user.username, new_password="example", confirm_new_password="example"
     )
     assert form.validate() is False
-    assert (
-        "This field is required." in form.current_password.errors
-    )
+    assert "This field is required." in form.current_password.errors
 
 
 def test_validate_missing_new_password(user):
@@ -72,9 +68,7 @@ def test_validate_missing_new_password(user):
         confirm_new_password="password",
     )
     assert form.validate() is False
-    assert (
-        "This field is required." in form.new_password.errors
-    )
+    assert "This field is required." in form.new_password.errors
 
 
 def test_validate_missing_confirm_new_password(user):
@@ -82,11 +76,7 @@ def test_validate_missing_confirm_new_password(user):
     user.set_password("example")
     user.save()
     form = ChangePasswordForm(
-        username=user.username,
-        current_password="example",
-        new_password="password",
+        username=user.username, current_password="example", new_password="password"
     )
     assert form.validate() is False
-    assert (
-        "This field is required." in form.confirm_new_password.errors
-    )
+    assert "This field is required." in form.confirm_new_password.errors
