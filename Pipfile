@@ -52,6 +52,7 @@ isort = "==4.3.20"
 pep8-naming = "==0.8.2"
 v = {version = "*", editable = true}
 pyyaml = "*"
+black = "*"
 
 [pipenv]
 allow_prereleases = true
