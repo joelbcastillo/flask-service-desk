@@ -1,6 +1,3 @@
-.. image:: https://codecov.io/gh/joelbcastillo/github-service-desk/branch/master/graph/badge.svg
-  :target: https://codecov.io/gh/joelbcastillo/github-service-desk .. image:: https://travis-ci.com/joelbcastillo/github-service-desk.svg?branch=master
-    :target: https://travis-ci.com/joelbcastillo/github-service-desk
 ===============================
 Github ServiceDesk
 ===============================
@@ -102,3 +99,18 @@ should cache all your assets forever by including the following line
 in your ``settings.py``::
 
     SEND_FILE_MAX_AGE_DEFAULT = 31556926  # one year
+
+.. |build-status| image:: https://travis-ci.com/joelbcastillo/github-service-desk.svg?branch=master&style=flat
+    :alt: build status
+    :scale: 100%
+    :target: https://travis-ci.com/joelbcastillo/github-service-desk
+
+.. |docs| image:: https://readthedocs.org/projects/github-service-desk/badge/?version=latest
+    :alt: Documentation Status
+    :scale: 100%
+    :target: https://github-service-desk.readthedocs.io/en/latest/?badge=latest
+
+.. |coverage| image:: https://codecov.io/gh/joelbcastillo/github-service-desk/branch/master/graph/badge.svg
+    :alt: Test coverage
+    :scale: 100%
+    :target: https://codecov.io/gh/joelbcastillo/github-service-desk
