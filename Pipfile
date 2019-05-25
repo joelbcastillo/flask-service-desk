@@ -55,6 +55,7 @@ black = "*"
 codecov = "*"
 sphinx = "*"
 pylint-flask = "*"
+pre-commit = "*"
 
 [pipenv]
 allow_prereleases = true
