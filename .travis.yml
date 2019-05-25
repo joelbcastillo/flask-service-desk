@@ -25,4 +25,4 @@ before_script:
 script: 
   - pytest --cov=servicedesk
 after_script:
-  - coveralls
+  - codecov
