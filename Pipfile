@@ -53,6 +53,7 @@ v = {version = "*", editable = true}
 pyyaml = "*"
 black = "*"
 codecov = "*"
+sphinx = "*"
 
 [pipenv]
 allow_prereleases = true

@@ -1,5 +1,5 @@
 ===============================
-Github ServiceDesk
+Flask-ServiceDesk
 ===============================
 
 |build-status| |docs| |coverage|
@@ -12,7 +12,7 @@ Quickstart
 
 Run the following commands to bootstrap your environment ::
 
-    git clone https://github.com/joelbcastillo/servicedesk
+    git clone https://github.com/joelbcastillo/flask-servicedesk
     cd servicedesk
     pipenv install --dev
     cp .env.example .env
@@ -102,17 +102,17 @@ in your ``settings.py``::
 
     SEND_FILE_MAX_AGE_DEFAULT = 31556926  # one year
 
-.. |build-status| image:: https://travis-ci.com/joelbcastillo/github-service-desk.svg?branch=master&style=flat
+.. |build-status| image:: https://travis-ci.com/joelbcastillo/flask-service-desk.svg?branch=master&style=flat
     :alt: build status
     :scale: 100%
-    :target: https://travis-ci.com/joelbcastillo/github-service-desk
+    :target: https://travis-ci.com/joelbcastillo/flask-service-desk
 
-.. |docs| image:: https://readthedocs.org/projects/github-service-desk/badge/?version=latest
+.. |docs| image:: https://readthedocs.org/projects/flask-service-desk/badge/?version=latest
     :alt: Documentation Status
     :scale: 100%
-    :target: https://github-service-desk.readthedocs.io/en/latest/?badge=latest
+    :target: https://flask-service-desk.readthedocs.io/en/latest/?badge=latest
 
-.. |coverage| image:: https://codecov.io/gh/joelbcastillo/github-service-desk/branch/master/graph/badge.svg
+.. |coverage| image:: https://codecov.io/gh/joelbcastillo/flask-service-desk/branch/master/graph/badge.svg
     :alt: Test coverage
     :scale: 100%
-    :target: https://codecov.io/gh/joelbcastillo/github-service-desk
+    :target: https://codecov.io/gh/joelbcastillo/flask-service-desk
