@@ -58,4 +58,8 @@ env/
 # Development database
 *.db
 
+# Temporary Files
 tmp/*
+
+# pytest
+.pytest_cache/
