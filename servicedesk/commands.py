@@ -68,13 +68,7 @@ def test(test_name: str = None, use_coverage: bool = False, verbose: bool = Fals
 
 
 @click.command()
-@click.option(
-    "--fix-imports",
-    default=False,
-    is_flag=True,
-    help="Fix imports using isort, before linting",
-)
-def lint(fix_imports):
+def lint():
     """Lint and check code style with black and isort."""
     skip = ["node_modules", "requirements"]
     root_files = glob("*.py")
@@ -93,8 +87,6 @@ def lint(fix_imports):
         if rv != 0:
             exit(rv)
 
-    if fix_imports:
-        execute_tool("Fixing import order", "isort", "-rc")
     execute_tool("Checking code style", "black", "--check")
 
 
@@ -175,7 +167,14 @@ def urls(url, order):
 
 
 @click.command()
-def blacken():
+@click.option(
+    "-f",
+    "--fix-imports",
+    default=False,
+    is_flag=True,
+    help="Fix imports using isort, before formatting",
+)
+def blacken(fix_imports):
     """Reformat code using black and isort."""
     skip = ["node_modules", "requirements"]
     root_files = glob("*.py")
@@ -194,4 +193,6 @@ def blacken():
         if rv != 0:
             exit(rv)
 
+    if fix_imports:
+        execute_tool("Fixing import order", "isort", "-rc")
     execute_tool("Formatting project", "black")
