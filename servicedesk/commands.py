@@ -10,7 +10,6 @@ from flask import current_app
 from flask.cli import with_appcontext
 from werkzeug.exceptions import MethodNotAllowed, NotFound
 
-
 COV = None
 if os.environ.get("FLASK_COVERAGE"):
     import coverage
@@ -70,14 +69,13 @@ def test(test_name: str = None, use_coverage: bool = False, verbose: bool = Fals
 
 @click.command()
 @click.option(
-    "-f",
     "--fix-imports",
     default=False,
     is_flag=True,
     help="Fix imports using isort, before linting",
 )
 def lint(fix_imports):
-    """Lint and check code style with flake8 and isort."""
+    """Lint and check code style with black and isort."""
     skip = ["node_modules", "requirements"]
     root_files = glob("*.py")
     root_directories = [
@@ -174,3 +172,26 @@ def urls(url, order):
 
     for row in rows:
         click.echo(str_template.format(*row[:column_length]))
+
+
+@click.command()
+def blacken():
+    """Reformat code using black and isort."""
+    skip = ["node_modules", "requirements"]
+    root_files = glob("*.py")
+    root_directories = [
+        name for name in next(os.walk("."))[1] if not name.startswith(".")
+    ]
+    files_and_directories = [
+        arg for arg in root_files + root_directories if arg not in skip
+    ]
+
+    def execute_tool(description, *args):
+        """Execute a checking tool with its arguments."""
+        command_line = list(args) + files_and_directories
+        click.echo("{}: {}".format(description, " ".join(command_line)))
+        rv = call(command_line)
+        if rv != 0:
+            exit(rv)
+
+    execute_tool("Formatting project", "black")

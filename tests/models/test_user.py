@@ -5,7 +5,6 @@ import datetime as dt
 import pytest
 
 from servicedesk.user.models import Role, User
-
 from tests.factories import UserFactory
 
 
