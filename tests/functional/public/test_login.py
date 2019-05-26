@@ -4,7 +4,7 @@ import pytest
 from flask import url_for
 
 
-@pytest.mark.skip(reason="no way of currently testing this")
+@pytest.mark.xfail(reason="no way of currently testing this")
 def test_can_log_in_returns_200(user, testapp):
     """Login successful."""
     # Goes to homepage
@@ -18,7 +18,7 @@ def test_can_log_in_returns_200(user, testapp):
     assert res.status_code == 200
 
 
-@pytest.mark.skip(reason="no way of currently testing this")
+@pytest.mark.xfail(reason="no way of currently testing this")
 def test_sees_alert_on_log_out(user, testapp):
     """Show alert on logout."""
     res = testapp.get("/")
@@ -33,7 +33,7 @@ def test_sees_alert_on_log_out(user, testapp):
     assert "You are logged out." in res
 
 
-@pytest.mark.skip(reason="no way of currently testing this")
+@pytest.mark.xfail(reason="no way of currently testing this")
 def test_sees_error_message_if_password_is_incorrect(user, testapp):
     """Show error if password is incorrect."""
     # Goes to homepage
@@ -48,7 +48,7 @@ def test_sees_error_message_if_password_is_incorrect(user, testapp):
     assert "Invalid password" in res
 
 
-@pytest.mark.skip(reason="no way of currently testing this")
+@pytest.mark.xfail(reason="no way of currently testing this")
 def test_sees_error_message_if_username_doesnt_exist(user, testapp):
     """Show error if username doesn't exist."""
     # Goes to homepage

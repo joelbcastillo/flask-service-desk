@@ -5,7 +5,7 @@ import pytest
 from tests.helpers.authentication import login
 
 
-@pytest.mark.skip(reason="no way of currently testing this")
+@pytest.mark.xfail(reason="no way of currently testing this")
 def test_members_endpoint(testapp, user):
     """GET /users/"""
     res = login(testapp, user)
@@ -13,7 +13,7 @@ def test_members_endpoint(testapp, user):
     assert "Welcome {username}".format(username=user.username) in res
 
 
-@pytest.mark.skip(reason="no way of currently testing this")
+@pytest.mark.xfail(reason="no way of currently testing this")
 def test_member_profile(testapp, user):
     """GET /users/"""
     res = login(testapp, user)
