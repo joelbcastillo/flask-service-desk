@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 """Test Logout endpoint."""
+import pytest
 from flask import url_for
 
 from tests.helpers.authentication import login
 
 
+@pytest.mark.skip(reason="no way of currently testing this")
 def test_logout_endpoint(user, testapp):
     res = login(testapp, user)
     res = testapp.get(url_for("public.logout")).follow()
