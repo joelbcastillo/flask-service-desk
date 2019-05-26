@@ -1,0 +1,29 @@
+
+{% extends "layout.html" %}
+{% block content %}
+<div class="container-narrow">
+  <h1 class="mt-5">New Feature Request</h1>
+    <br/>
+    <p>Use this form to submit a new feature request to {{ config['GITHUB_PROJECT_NAME'] }}</p>
+    <form id="newIssueForm" class="form form-register" method="POST" action="" role="form">
+           {{ form.csrf_token }}
+            <div class="form-group">
+                {{form.name.label}}
+                {{form.name(placeholder="Your Name", class_="form-control")}}
+            </div>
+            <div class="form-group">
+                {{form.email.label}}
+                {{form.email(placeholder="Email", class_="form-control")}}
+            </div>
+            <div class="form-group">
+                {{form.subject.label}}
+                {{form.subject(placeholder="Subject of your request.", class_="form-control")}}
+            </div>
+            <div class="form-group">
+                {{form.description.label}}
+                {{form.description(placeholder="Description", class_="form-control")}}
+            </div>
+            <p><input class="btn btn-primary" type="submit" value="Submit"></p>
+    </form>
+</div>
+{% endblock %}

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Public forms."""
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField
-from wtforms.validators import DataRequired
+from wtforms import PasswordField, StringField, TextAreaField
+from wtforms.validators import DataRequired, Email
 
 from servicedesk.user.models import User
 
@@ -36,4 +36,25 @@ class LoginForm(FlaskForm):
         if not self.user.active:
             self.username.errors.append("User not activated")
             return False
+        return True
+
+
+class NewFeatureRequestForm(FlaskForm):
+    """New Github Issue Form."""
+
+    name = StringField("Name", validators=[DataRequired()])
+    email = StringField("Email", validators=[DataRequired(), Email()])
+    subject = StringField("Subject", validators=[DataRequired()])
+    description = TextAreaField("Description", validators=[DataRequired()])
+
+    def __init__(self, *args, **kwargs):
+        super(NewFeatureRequestForm, self).__init__(*args, **kwargs)
+
+    def validate(self):
+        """Validate the form."""
+        initial_validation = super(NewFeatureRequestForm, self).validate()
+
+        if not initial_validation:
+            return False
+
         return True

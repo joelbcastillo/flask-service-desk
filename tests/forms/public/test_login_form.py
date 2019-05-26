@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Test the New User Registration form."""
 
-from servicedesk.public.forms import LoginForm
+from servicedesk.public.forms import LoginForm, NewFeatureRequestForm
 
 
 def test_validate_success(user):

@@ -56,6 +56,7 @@ codecov = "*"
 sphinx = "*"
 pylint-flask = "*"
 pre-commit = "*"
+rope = "*"
 
 [pipenv]
 allow_prereleases = true

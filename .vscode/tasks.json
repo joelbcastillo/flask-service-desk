@@ -1,12 +1,15 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
         {
             "label": "pytest",
             "type": "shell",
-            "command": "pipenv run pytest --cov=servicedesk"
+            "command": "pipenv run flask test"
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "pipenv run flask clean"
         }
     ]
 }

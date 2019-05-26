@@ -4,7 +4,7 @@ from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import login_required, login_user, logout_user
 
 from servicedesk.extensions import login_manager
-from servicedesk.public.forms import LoginForm
+from servicedesk.public.forms import LoginForm, NewFeatureRequestForm
 from servicedesk.user.forms import RegisterForm
 from servicedesk.user.models import User
 from servicedesk.utils import flash_errors
@@ -59,6 +59,19 @@ def register():
     else:
         flash_errors(form)
     return render_template("public/register.html", form=form)
+
+
+@blueprint.route("/feature-request", methods=["GET", "POST"])
+def feature_request():
+    """Request a new feature."""
+    form = NewFeatureRequestForm(request.form)
+    if form.validate_on_submit():
+        flash("Thank you for submitting your feature request!")
+        return redirect(url_for("public.home"))
+    else:
+        flash_errors(form)
+
+    return render_template("public/new_feature_request.html", form=form)
 
 
 @blueprint.route("/about/")
