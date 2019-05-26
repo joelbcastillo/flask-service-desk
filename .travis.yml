@@ -2,15 +2,16 @@
 language: python
 env:
   global:
-    - FLASK_APP=autoapp.py 
-    - FLASK_DEBUG=1 
+    - FLASK_APP=autoapp.py
+    - FLASK_DEBUG=1
     - DATABASE_URL="sqlite:////tmp/dev.db"
     - SECRET_KEY="not-so-secret"
+    - GITHUB_REPO_NAME="Test Repo"
 matrix:
-  include: 
+  include:
     - python: 3.6
       dist: trusty
-    - python: 3.7 
+    - python: 3.7
       dist: xenial
 install:
   - pip install pipenv
@@ -22,7 +23,7 @@ before_script:
   - npm run lint
   - npm run build
   - flask lint
-script: 
+script:
   - pytest --cov=servicedesk
 after_script:
   - codecov
