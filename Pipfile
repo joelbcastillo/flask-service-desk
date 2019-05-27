@@ -57,6 +57,7 @@ sphinx = "*"
 pylint-flask = "*"
 pre-commit = "*"
 rope = "*"
+recommonmark = "*"
 
 [pipenv]
 allow_prereleases = true
